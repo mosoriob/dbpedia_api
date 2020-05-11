@@ -1,0 +1,48 @@
+import connexion
+import six
+from openapi_server import query_manager
+from openapi_server.utils.vars import SURFER_TYPE_NAME, SURFER_TYPE_URI
+
+from openapi_server.models.surfer import Surfer  # noqa: E501
+from openapi_server import util
+
+def surfers_get(label=None, page=None, per_page=None):  # noqa: E501
+    """List all instances of Surfer
+
+    Gets a list of all instances of Surfer (more information in http://dbpedia.org/ontology/Surfer) # noqa: E501
+
+    :param label: Filter by label
+    :type label: str
+    :param page: Page number
+    :type page: int
+    :param per_page: Items per page
+    :type per_page: int
+
+    :rtype: List[Surfer]
+    """
+
+
+    return query_manager.get_resource(
+        label=label,
+        page=page,
+        per_page=per_page,
+        rdf_type_uri=SURFER_TYPE_URI,
+        rdf_type_name=SURFER_TYPE_NAME, 
+        kls=Surfer)
+
+def surfers_id_get(id):  # noqa: E501
+    """Get a single Surfer by its id
+
+    Gets the details of a given Surfer (more information in http://dbpedia.org/ontology/Surfer) # noqa: E501
+
+    :param id: The ID of the Surfer to be retrieved
+    :type id: str
+
+    :rtype: Surfer
+    """
+
+
+    return query_manager.get_resource(id=id,
+        rdf_type_uri=SURFER_TYPE_URI,
+        rdf_type_name=SURFER_TYPE_NAME, 
+        kls=Surfer)
