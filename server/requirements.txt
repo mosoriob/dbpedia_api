@@ -1,3 +1,4 @@
+flask_cors
 pythonql3==0.9.61
 connexion >= 2.6.0
 obasparql >= 3.4.2

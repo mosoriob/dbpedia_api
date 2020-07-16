@@ -4,7 +4,7 @@ import connexion
 from connexion.spec import Specification
 from openapi_server.cached import CachedSpecification
 from openapi_server import encoder
-
+from flask_cors import CORS
 
 def main():
     app = connexion.App(__name__, specification_dir='./openapi/')
@@ -13,6 +13,7 @@ def main():
     app.add_api('openapi.yaml',
                 arguments={'title': 'DBpedia'},
                 pythonic_params=False)
+    CORS(app.app)
     app.run(port=8080)
 
 
