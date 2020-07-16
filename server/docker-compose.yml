@@ -6,3 +6,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8081:8080
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    ports:
+      - "11001:8080"
+    volumes:
+      - "./:/tmp/"
+    environment:
+      SWAGGER_JSON: "/tmp/openapi.json"
+      BASE_URL: "/v0.0.1/ui"
